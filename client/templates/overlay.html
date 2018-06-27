@@ -1,0 +1,6 @@
+<template name="overlay">
+    {{#if currentUser}} {{> navigation}} {{/if}}
+    <div id="overlay-hook">
+        {{> yield}}
+    </div>
+</template>
