@@ -8,42 +8,33 @@
                 <li class="active">
                     <a href="#">Home</a>
                 </li>
+                {{#each navlist}}
                 <li>
-                    <a href="#">Top Stories</a>
+                    <a href="#">{{name}}</a>
                 </li>
-                <li>
-                    <a href="#">Sports</a>
-                </li>
-                <li>
-                    <a href="#">Politics</a>
-                </li>
-                <li>
-                    <a href="#">Economy</a>
-                </li>
-                <li>
-                    <a href="#">Entertainment</a>
-                </li>
-                <li>
-                    <a href="#">World</a>
-                </li>
+                {{/each}}
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Times of India
+                    <img src="{{logoUrl}}" height="50" width="200">
+                </li>
+                <li>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <span id = "selectedChannel"></span>
                         <span class="caret"></span>
                     </a>
-                    <ul class="dropdown-menu">
-                        <li>
-                            <a href="#">Times of India</a>
-                        </li>
-                        <li>
-                            <a href="#">Hindustan Times</a>
-                        </li>
-                        <li>
-                            <a href="#">Economics Times</a>
-                        </li>
+                    <ul class="dropdown-menu" id='drpdown'>
+                        <li style="padding-left: 10px">English</li>
                         <li class="divider"></li>
+                        {{#each channelList}}
+                        <li>
+                            <a href='#' id = {{_id}}>{{name}}</a>
+                        </li>
+                        {{/each}}
+                        <li class="divider"></li>
+                        <li style="padding-left: 10px">Hindi</li>
+                        <li class="divider"></li>
+
                         <li>
                             <a href="#">Dainik Bhaskar</a>
                         </li>
@@ -56,7 +47,12 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="#">
+                    <a>
+                        <span>Hi {{username}}</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="logout">
                         <span class="glyphicon glyphicon-log-out"></span> logout</a>
                 </li>
             </ul>

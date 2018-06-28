@@ -24,3 +24,7 @@ session
 accounts-password
 twbs:bootstrap
 themeteorchef:jquery-validation
+aldeed:autoform
+aldeed:collection2
+aldeed:simple-schema
+http
