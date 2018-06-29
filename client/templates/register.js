@@ -10,11 +10,7 @@ Template.register.onRendered(function () {
 
             Accounts.createUser({
                 email: email,
-                password: password,
-                profile: {
-                    name: name,
-                    city: city
-                }
+                password: password
             }, function (err) {
                 if (err) {
                     if (err.reason == "Email already exists.") {
@@ -23,6 +19,12 @@ Template.register.onRendered(function () {
                         });
                     }
                 } else {
+                    UserDetails.insert({
+                        user_id : Meteor.userId(),
+                        name : name,
+                        city : city,
+                        selected_channel : false
+                    })
                     console.log('User saved.');
                     Router.go('home');
                 }

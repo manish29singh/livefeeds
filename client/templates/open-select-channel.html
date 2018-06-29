@@ -1,0 +1,45 @@
+<template name="selectChannel">
+        <div class="modal fade" id="myModal" role="dialog">
+                <div class="modal-dialog">
+                
+                  <!-- Modal content-->
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                      <h4 class="modal-title">Modal Header</h4>
+                    </div>
+                    <div class="modal-body">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <span id = "selectedChannel">Select a Channel</span>
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu" id='drpdown'>
+                                <li style="padding-left: 10px">English</li>
+                                <li class="divider"></li>
+                                {{#each channelList}}
+                                <li>
+                                    <a href='#' id = {{_id}}>{{name}}</a>
+                                </li>
+                                {{/each}}
+                                <li class="divider"></li>
+                                <li style="padding-left: 10px">Hindi</li>
+                                <li class="divider"></li>
+        
+                                <li>
+                                    <a href="#">Dainik Bhaskar</a>
+                                </li>
+                                <li>
+                                    <a href="#">NDTV India</a>
+                                </li>
+                                <li>
+                                    <a href="#">IBN7</a>
+                                </li>
+                            </ul>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                  </div>
+                  
+                </div>
+              </div>
+</template>

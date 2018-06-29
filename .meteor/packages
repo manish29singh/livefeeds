@@ -28,3 +28,5 @@ aldeed:autoform
 aldeed:collection2
 aldeed:simple-schema
 http
+simple:reactive-method
+msavin:mongol

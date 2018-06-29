@@ -4,8 +4,9 @@ import { Template } from 'meteor/templating';
 var channelName, logo;
 Template.navigation.helpers({
     username: function () {
-        var username = Meteor.user().profile.name;
-
+        console.log('userId: ', Meteor.userId());
+        var data = UserDetails.findOne({user_id : Meteor.userId()});
+        var username = data.name;
         return username;
     },
     navlist: function () {

@@ -3,20 +3,22 @@
         <div class="row">
             <div class="col-md-1"></div>
             <div class="col-lg-12">
+                {{#each feeds}}
                 <div id="feed" class="block-white">
                     <div class="row">
                         <div class="col-md-3">
-                            <img src="{{feeds.imgUrl}}"
-                                height="100%" width="100%">
+                           {{{this.imgUrl}}}
                         </div>
                         <div class="col-md-9">
-                            <h1>{{feeds.title}}</h1>
-                            <h6>{{feeds.pubDate}}</h6>
-                            <p>{{feeds.description}}</p>
+                            <h1>{{this.title}}</h1>
+                            <h6>{{this.pubDate}}</h6>
+                            <p>{{this.description}}</p>
                         </div>
                     </div>
                 </div>
+                {{/each}}
             </div>
         </div>
     </div>
+    {{>selectChannel}}
 </template>
