@@ -1,4 +1,17 @@
-<template name = "home">
-    <h2>Welcome to home page.</h2>
-    {{>selectChannel}}
+<template name="home">
+    <div class=" container">
+        <div class="row">
+            <div class="col-md-4 block-white" style="margin-right: 10px;">
+                {{>topstories channel = "Times of India"}}
+            </div>
+             <div class="col-md-3 block-white" style="margin-right: 10px">
+                {{>topstories channel = "Hindustan Times"}}
+            </div>
+           <div class="col-lg-4 block-white" style="margin-right: 10px">
+                {{>topstories channel = "NDTV India"}}
+            </div>
+
+          
+        </div>
+    </div>
 </template>

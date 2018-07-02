@@ -1,0 +1,25 @@
+<template name="topstories">
+
+    <center>
+        <h1>{{channel}}</h1>
+    </center>
+    <div class="anyClass">
+      
+        <hr> {{#each feed channel}}
+        <div id="feed">
+            <div class="row">
+                <div class="col-md-3">
+                    {{{imgUrl}}}
+                </div>
+                <div class="col-md-9">
+                    <h4>{{title}}</h4>
+                    <h6>{{pubDate}}</h6>
+                    <p>{{{description}}}</p>
+                </div>
+            </div>
+        </div>
+        <hr> {{/each}}
+      
+    </div>
+
+</template>

@@ -16,7 +16,7 @@ Template.home.onRendered(function(){
            console.log('error: ', err);
        } else {
            Session.set('q', result);
-           console.log('status ', result);
+          // console.log('status ', result);
        }
    })
     if(!Session.get('q')) {
