@@ -8,19 +8,23 @@
                 <li class="active">
                     <a href="#">Home</a>
                 </li>
-                {{#each navlist}}
+                {{#if selectedChannel}}
+                {{#each selectedChannel.categories}}
                 <li>
                     <a href="#">{{name}}</a>
                 </li>
                 {{/each}}
+                {{/if}}
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
+                {{#if selectedChannel}}
                 <li>
-                    <img src="{{logoUrl}}" height="50" width="200">
+                    <img src="{{selectedChannel.logo_url}}" height="50" width="200">
                 </li>
+                {{/if}}
                 <li>
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <span id = "selectedChannel">Select a channel</span>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <span id = "selectedChannel">{{#if selectedChannel}}{{selectedChannel.name}}{{else}}Select a channel {{/if}}</span>
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu" id='drpdown'>

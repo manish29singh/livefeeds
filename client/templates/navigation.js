@@ -9,16 +9,14 @@ Template.navigation.helpers({
         var username = data.name;
         return username;
     },
-    navlist: function () {
-        return Categories.find().fetch();
-    },
-    logoUrl: function () {
-        let data = NewsChannels.findOne({ language: 'en' });
-        return data.logo_url;
-    },
     channelList: function () {
         let data = NewsChannels.find().fetch();
         return data;
+    },
+    selectedChannel : function() {
+        let user = UserDetails.findOne({user_id : Meteor.userId()});
+        let channel = NewsChannels.findOne({_id : user.selected_channel})
+        return channel;
     }
 })
 
@@ -32,6 +30,8 @@ Template.navigation.events({
     'click #drpdown a': function (event) {
         event.preventDefault();
         $("#selectedChannel").text(this.name);
+        console.log('channel id ', this._id)
+        Meteor.call('changeSelectedChannel', Meteor.userId(), this._id);
         console.log('logging' , this.name);
     }
 });

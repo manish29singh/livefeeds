@@ -26,7 +26,7 @@ Template.topstories.helpers({
                 for (res in result.rss.channel[0].item) {
                     let strArr = result.rss.channel[0].item[i].description[0].split('/></a>');
                     let img;
-                    let descr;
+                    let descr = result.rss.channel[0].item[i].description[0];
                    // console.log('string arr length ', strArr.length)
                     if (strArr.length >= 2) {
                         descr = strArr[1];
@@ -34,10 +34,17 @@ Template.topstories.helpers({
 
                     } else {
                         descr = strArr[0];
-                        img = '';
+                        img ='';
                     }
-                    if(channel == 'Hindustan Times') {
+                    if(channel == 'Hindustan Times' || channel == 'Mid Day' ){
+                        if(result.rss.channel[0].item[i]['media:content'][0]['$'].url);
                         img =  `<a href = '#'><img src = ${result.rss.channel[0].item[i]['media:content'][0]['$'].url} height='100%' width='100%'/></a>`
+                    }
+                    if(channel == 'News 18'){
+                        
+                    }
+                    if(channel == 'Mid Day'){
+                        descr = result.rss.channel[0].item[i].summary[0];
                     }
                     let feedObj = {
                         title: result.rss.channel[0].item[i].title[0],
