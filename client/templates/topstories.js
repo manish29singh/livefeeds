@@ -15,7 +15,8 @@ Template.topstories.helpers({
         var template = Template.instance();
         // let Feed = {};
         let feedArr = [];
-        Meteor.call('fetchFeeds', channel, (err, result) => {
+        let categoryId = '7LkjixM2roZcw3YxG';
+        Meteor.call('fetchFeeds', channel, categoryId , (err, result) => {
             if (err) {
                 console.log('error : ', err);
             }

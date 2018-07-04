@@ -10,14 +10,19 @@ Meteor.startup(() => {
 });
 
 Meteor.methods({
-  'fetchFeeds': async function (channel) {
+  'fetchFeeds': async function (channelName, categoryId ) {
     try {
       var url;
-      var doc = await NewsChannels.findOne({ name: channel });
+    
+      var doc = await NewsChannels.findOne({ name: channelName });
+   
+      let obj = doc.sub_url.find(function(element){
+      //  console.log('element', element)
+        return element.category_id == categoryId;
+      })
+     // console.log('array obj: ', obj);
       if (doc) {
-
-
-        url = doc.base_url + doc.sub_url[0].sub_link;
+        url = doc.base_url + obj.sub_link;
         //console.log('url', url)
         var res = HTTP.call('GET', url);
         let parser = new x2j.Parser();

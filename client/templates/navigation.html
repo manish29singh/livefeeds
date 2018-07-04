@@ -6,12 +6,12 @@
             </div>
             <ul class="nav navbar-nav">
                 <li class="active">
-                    <a href="#">Home</a>
+                    <a href="{{pathFor route = 'home'}}">Home</a>
                 </li>
                 {{#if selectedChannel}}
                 {{#each selectedChannel.categories}}
                 <li>
-                    <a href="#">{{name}}</a>
+                    <a href='{{pathFor route = "feeds" channelName= selectedChannel.name categoryId = category_id}}'>{{name}}</a>
                 </li>
                 {{/each}}
                 {{/if}}
@@ -20,11 +20,11 @@
             <ul class="nav navbar-nav navbar-right">
                 {{#if selectedChannel}}
                 <li>
-                    <img src="{{selectedChannel.logo_url}}" height="50" width="200">
+                    <img src="{{selectedChannel.logo_url}}" height="50" width="50">
                 </li>
                 {{/if}}
                 <li>
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <span id = "selectedChannel">{{#if selectedChannel}}{{selectedChannel.name}}{{else}}Select a channel {{/if}}</span>
+                    <a href='#' class="dropdown-toggle" data-toggle="dropdown"> <span id = "selectedChannel">{{#if selectedChannel}}{{selectedChannel.name}}{{else}}Select a channel {{/if}}</span>
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu" id='drpdown'>

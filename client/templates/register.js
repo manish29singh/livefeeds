@@ -1,5 +1,13 @@
 import { Template } from 'meteor/templating';
 
+Template.register.onCreated(function(){
+    console.log('Login : onCreated');
+    var currentUser = Meteor.userId();
+    if(currentUser) {
+        Router.go('home');
+    }
+});
+
 Template.register.onRendered(function () {
     var validator = $('.register').validate({
         submitHandler: function (event) {

@@ -29,9 +29,9 @@ Template.navigation.events({
 
     'click #drpdown a': function (event) {
         event.preventDefault();
-        $("#selectedChannel").text(this.name);
-        console.log('channel id ', this._id)
+       // $("#selectedChannel").text(this.name);
         Meteor.call('changeSelectedChannel', Meteor.userId(), this._id);
-        console.log('logging' , this.name);
+        Router.go('feeds', {channelName: this.name, categoryId : '7LkjixM2roZcw3YxG'});
     }
 });
+
