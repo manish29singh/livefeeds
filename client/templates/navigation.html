@@ -20,7 +20,7 @@
             <ul class="nav navbar-nav navbar-right">
                 {{#if selectedChannel}}
                 <li>
-                    <img src="{{selectedChannel.logo_url}}" height="50" width="50">
+                    <img src="{{selectedChannel.logo_url}}" height="50" width="130">
                 </li>
                 {{/if}}
                 <li>
@@ -38,16 +38,11 @@
                         <li class="divider"></li>
                         <li style="padding-left: 10px">Hindi</li>
                         <li class="divider"></li>
-
+                        {{#each channelListHindi}}
                         <li>
-                            <a href="#">Dainik Bhaskar</a>
+                            <a href='#' id = {{_id}}>{{name}}</a>
                         </li>
-                        <li>
-                            <a href="#">NDTV India</a>
-                        </li>
-                        <li>
-                            <a href="#">IBN7</a>
-                        </li>
+                        {{/each}}
                     </ul>
                 </li>
                 <li>

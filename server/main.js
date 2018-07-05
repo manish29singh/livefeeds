@@ -13,17 +13,14 @@ Meteor.methods({
   'fetchFeeds': async function (channelName, categoryId ) {
     try {
       var url;
-    
+   // console.log('server run')
       var doc = await NewsChannels.findOne({ name: channelName });
    
       let obj = doc.sub_url.find(function(element){
-      //  console.log('element', element)
         return element.category_id == categoryId;
       })
-     // console.log('array obj: ', obj);
       if (doc) {
         url = doc.base_url + obj.sub_link;
-        //console.log('url', url)
         var res = HTTP.call('GET', url);
         let parser = new x2j.Parser();
         let s;
@@ -35,7 +32,6 @@ Meteor.methods({
               console.log('error', err)
             }
             s = JSON.stringify(result);
-            //console.log('result parsed : ', s);
           })
         }
         return s;
@@ -54,8 +50,6 @@ Meteor.methods({
   },
 
   'changeSelectedChannel': function (userId, channelId) {
-    console.log('user id : ' + userId);
-    console.log('channel id : ' + channelId)
     UserDetails.update({ user_id: userId }, { $set: { selected_channel: channelId } }, function (err, result) {
       if (err) {
         console('error: ', err);

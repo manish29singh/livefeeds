@@ -10,7 +10,11 @@ Template.navigation.helpers({
         return username;
     },
     channelList: function () {
-        let data = NewsChannels.find().fetch();
+        let data = NewsChannels.find({language : 'en'}).fetch();
+        return data;
+    },
+    channelListHindi: function () {
+        let data = NewsChannels.find({language : 'hi'}).fetch();
         return data;
     },
     selectedChannel : function() {
