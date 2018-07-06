@@ -49,7 +49,7 @@ Meteor.methods({
   'changeSelectedChannel': function (userId, channelId) {
     UserDetails.update({ user_id: userId }, { $set: { selected_channel: channelId } }, function (err, result) {
       if (err) {
-        console('error: ', err);
+        console.log('error: ', err);
       } else {
         console.log('updated', result);
       }

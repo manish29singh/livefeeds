@@ -6,7 +6,7 @@ Template.feeds.onCreated(function () {
 });
 
 Template.feeds.onRendered(function () {
-
+   
 })
 
 Template.feeds.helpers({
@@ -34,7 +34,7 @@ Template.feeds.helpers({
 
                     } else {
                         descr = strArr[0];
-                        img = '';
+                        img = 'Image not available';
                     }
                     if (channel == 'Hindustan Times' || channel == 'Mid Day') {
                         if (result.rss.channel[0].item[i]['media:content'][0]['$'].url);
@@ -55,7 +55,7 @@ Template.feeds.helpers({
     
                         } else {
                             descr = strArr[0];
-                            img = '';
+                            img = 'Image not available';
                         }
                     }
                     if(channel == 'India Today') {
@@ -66,7 +66,7 @@ Template.feeds.helpers({
     
                         } else {
                             descr = strArr[0];
-                            img = '';
+                            img = 'Image not available';
                         }
                     }
                     let feedObj = {

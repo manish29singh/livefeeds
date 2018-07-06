@@ -6,7 +6,7 @@ Template.navigation.helpers({
     username: function () {
         console.log('userId: ', Meteor.userId());
         var data = UserDetails.findOne({user_id : Meteor.userId()});
-        var username = data.name;
+        var username = data.name.split(' ')[0];
         return username;
     },
     channelList: function () {
@@ -27,8 +27,10 @@ Template.navigation.helpers({
 Template.navigation.events({
     'click .logout': function (event) {
         event.preventDefault();
-        Meteor.logout();
-        Router.go('login');
+        Meteor.logout(function(){
+            Router.go('login');
+        });
+        
     },
 
     'click #drpdown a': function (event) {

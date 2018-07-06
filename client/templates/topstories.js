@@ -41,11 +41,30 @@ Template.topstories.helpers({
                         if(result.rss.channel[0].item[i]['media:content'][0]['$'].url);
                         img =  `<a href = '#'><img src = ${result.rss.channel[0].item[i]['media:content'][0]['$'].url} height='100%' width='100%'/></a>`
                     }
-                    if(channel == 'News 18'){
-                        
-                    }
                     if(channel == 'Mid Day'){
                         descr = result.rss.channel[0].item[i].summary[0];
+                    }
+                    if (channel == 'News 18') {
+                        let strArr = result.rss.channel[0].item[i].description[0].split('/>');
+                        if (strArr.length >= 2) {
+                            descr = strArr[1];
+                            img = strArr[0] + "height='100%' width='100%'/>";
+    
+                        } else {
+                            descr = strArr[0];
+                            img = '';
+                        }
+                    }
+                    if(channel == 'India Today') {
+                        let strArr = result.rss.channel[0].item[i].description[0].split('> </a>');
+                        if (strArr.length >= 2) {
+                            descr = strArr[1];
+                            img = strArr[0] + "height='100%' width='100%'/></a>";
+    
+                        } else {
+                            descr = strArr[0];
+                            img = '';
+                        }
                     }
                     let feedObj = {
                         title: result.rss.channel[0].item[i].title[0],

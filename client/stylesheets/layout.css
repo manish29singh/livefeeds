@@ -3,13 +3,13 @@ body{
 }
 
 .block-white{
-    background-color: #ffffff;
-    border-radius: 15px;  
-    padding: 5px
+    background-color: #cabfbf;
+    border-radius: 0px;  
+    padding: 15px 5px 15px 15px;
 }
 
 .anyClass {
-    height:400px;
+    height:600px;
     overflow-y: scroll;
     overflow-x: hidden
   }
@@ -19,3 +19,23 @@ body{
     border-radius: 15px;  
     padding: 20px 
   }
+
+/* width */
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+}

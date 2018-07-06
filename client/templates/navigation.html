@@ -45,20 +45,39 @@
                         {{/each}}
                     </ul>
                 </li>
+
                 <li>
-                    <a>
-                        <span>Hi {{username}}</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="logout">
-                        <span class="glyphicon glyphicon-log-out"></span> logout</a>
-                </li>
-                <li>
-                    <a href="{{pathFor route = 'bookmarks'}}">
-                        <span class="glyphicon glyphicon-bookmark"></span> Bookmarks</a>
-                </li>
+                        <a href='#' class="dropdown-toggle" data-toggle="dropdown"> <span>Hi, {{username}}</span>
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                                    <li>
+                                        <a href="#" class="logout">
+                                            <span class="glyphicon glyphicon-log-out"></span> logout</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{pathFor route = 'bookmarks'}}">
+                                            <span class="glyphicon glyphicon-bookmark"></span> Bookmarks</a>
+                                    </li> 
+                        </ul>
+                    </li>
+
             </ul>
         </div>
     </nav>
 </template>
+
+
+<!-- <li>
+        <a>
+            <span>Hi {{username}}</span>
+        </a>
+    </li>
+    <li>
+        <a href="#" class="logout">
+            <span class="glyphicon glyphicon-log-out"></span> logout</a>
+    </li>
+    <li>
+        <a href="{{pathFor route = 'bookmarks'}}">
+            <span class="glyphicon glyphicon-bookmark"></span> Bookmarks</a>
+    </li> -->
