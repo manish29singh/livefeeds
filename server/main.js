@@ -3,20 +3,16 @@ import x2j from 'xml2js';
 
 Meteor.startup(() => {
 
-
-
-  // console.log('res', res.content);
-
 });
 
 Meteor.methods({
-  'fetchFeeds': async function (channelName, categoryId ) {
+  'fetchFeeds': async function (channelName, categoryId) {
     try {
       var url;
-   // console.log('server run')
+      // console.log('server run')
       var doc = await NewsChannels.findOne({ name: channelName });
-   
-      let obj = doc.sub_url.find(function(element){
+
+      let obj = doc.sub_url.find(function (element) {
         return element.category_id == categoryId;
       })
       if (doc) {
@@ -30,8 +26,9 @@ Meteor.methods({
           parser.parseString(res.content, function (err, result) {
             if (err) {
               console.log('error', err)
+            } else {
+              s = JSON.stringify(result);
             }
-            s = JSON.stringify(result);
           })
         }
         return s;
@@ -57,6 +54,17 @@ Meteor.methods({
         console.log('updated', result);
       }
     });
+  },
+
+  'bookmarkIn' : function(book) {
+    BookMarks.insert({
+      user_id : book.user_id,
+      news_title : book.title,
+      news_img_url : book.imgUrl,
+      news_link : book.link,
+      news_pubdate : book.pubDate,
+      news_channel : book.channelName
+    })
   }
 })
 
