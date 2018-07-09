@@ -6,4 +6,11 @@ Template.bookmarks.helpers({
         let userId = Meteor.userId();
         return BookMarks.find({user_id: userId}).fetch();
     }
+});
+
+Template.bookmarks.events({
+    'click .remove' : function(event) {
+        event.preventDefault();
+        Meteor.call('removeBookmark', this._id);
+    }
 })

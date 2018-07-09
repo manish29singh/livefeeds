@@ -9,7 +9,7 @@ Meteor.methods({
   'fetchFeeds': async function (channelName, categoryId) {
     try {
       var url;
-      // console.log('server run')
+      //console.log('server run')
       var doc = await NewsChannels.findOne({ name: channelName });
 
       let obj = doc.sub_url.find(function (element) {
@@ -58,6 +58,27 @@ Meteor.methods({
 
   'bookmarkIn' : function(book) {
     BookMarks.insert({
+      user_id : book.user_id,
+      news_title : book.title,
+      news_img_url : book.imgUrl,
+      news_link : book.link,
+      news_pubdate : book.pubDate,
+      news_channel : book.channelName
+    })
+  },
+
+  'removeBookmark': function(bkId){
+    if(!Meteor.userId()){
+      throw new Meteor.Error("not-logged-in", "You're not logged-in.");
+    }
+    BookMarks.remove({
+      _id : bkId,
+      user_id : Meteor.userId()
+    });
+  },
+
+  'recentViewsIn' : function(book) {
+    RecentViews.insert({
       user_id : book.user_id,
       news_title : book.title,
       news_img_url : book.imgUrl,

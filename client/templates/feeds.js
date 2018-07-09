@@ -115,6 +115,27 @@ Template.feeds.events({
     }
 })
 
+Template.feeds.events({
+    'click .recent-views' : function(event) {
+       // event.preventDefault();
+        console.log('button clicked: ', this);
+       let  book = {
+            user_id : Meteor.userId(),
+            title : this.title,
+            imgUrl : this.imgUrl,
+            link : this.link,
+            pubDate : this.pubDate,
+            channelName : Template.instance().data.channelName
+        }
+        if(this.imgUrl) {
+            book['imgUrl'] = this.imgUrl;
+        } else {
+            book['imgUrl'] = 'Image not available';
+        }
+        Meteor.call('recentViewsIn', book);
+    }
+})
+
 
 
 
