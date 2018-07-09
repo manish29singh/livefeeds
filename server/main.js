@@ -9,7 +9,6 @@ Meteor.methods({
   'fetchFeeds': async function (channelName, categoryId) {
     try {
       var url;
-      //console.log('server run')
       var doc = await NewsChannels.findOne({ name: channelName });
 
       let obj = doc.sub_url.find(function (element) {
@@ -86,6 +85,16 @@ Meteor.methods({
       news_pubdate : book.pubDate,
       news_channel : book.channelName
     })
+  },
+
+  'removeRecentView' : function(id) {
+    if(!Meteor.userId()){
+      throw new Meteor.Error("not-logged-in", "You're not logged-in.");
+    }
+    RecentViews.remove({
+      _id : id,
+      user_id : Meteor.userId()
+    });
   }
 })
 

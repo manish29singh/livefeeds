@@ -1,13 +1,13 @@
 import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
 
+//var category;
+
 Template.feeds.onCreated(function () {
+    this.category = Meteor.subscribe('categories');
     this.dataList = new ReactiveVar(null);
 });
 
-Template.feeds.onRendered(function () {
-   
-})
 
 Template.feeds.helpers({
     feeds: function () {
@@ -52,18 +52,18 @@ Template.feeds.helpers({
                         if (strArr.length >= 2) {
                             descr = strArr[1];
                             img = strArr[0] + "height='100%' width='100%'/>";
-    
+
                         } else {
                             descr = strArr[0];
                             img = 'Image not available';
                         }
                     }
-                    if(channel == 'India Today') {
+                    if (channel == 'India Today') {
                         let strArr = result.rss.channel[0].item[i].description[0].split('> </a>');
                         if (strArr.length >= 2) {
                             descr = strArr[1];
                             img = strArr[0] + "height='100%' width='100%'/></a>";
-    
+
                         } else {
                             descr = strArr[0];
                             img = 'Image not available';
@@ -86,27 +86,29 @@ Template.feeds.helpers({
         return Template.instance().dataList.get();
     },
 
-    categoryName : function() {
-        var categoryId = Template.instance().data.categoryId;
-        let doc = Categories.findOne({_id : categoryId});
-        return doc.name;
+    categoryName: function () {
+        if(Template.instance().category.ready()){
+            var categoryId = Template.instance().data.categoryId;
+            let doc = Categories.findOne({ _id: categoryId });
+            return doc.name;
+        }
     }
 
 });
 
 Template.feeds.events({
-    'click .bookmark' : function(event) {
+    'click .bookmark': function (event) {
         event.preventDefault();
         console.log('button clicked: ', this);
-       let  book = {
-            user_id : Meteor.userId(),
-            title : this.title,
-            imgUrl : this.imgUrl,
-            link : this.link,
-            pubDate : this.pubDate,
-            channelName : Template.instance().data.channelName
+        let book = {
+            user_id: Meteor.userId(),
+            title: this.title,
+            imgUrl: this.imgUrl,
+            link: this.link,
+            pubDate: this.pubDate,
+            channelName: Template.instance().data.channelName
         }
-        if(this.imgUrl) {
+        if (this.imgUrl) {
             book['imgUrl'] = this.imgUrl;
         } else {
             book['imgUrl'] = 'Image not available';
@@ -116,18 +118,18 @@ Template.feeds.events({
 })
 
 Template.feeds.events({
-    'click .recent-views' : function(event) {
-       // event.preventDefault();
+    'click .recent-views': function (event) {
+        // event.preventDefault();
         console.log('button clicked: ', this);
-       let  book = {
-            user_id : Meteor.userId(),
-            title : this.title,
-            imgUrl : this.imgUrl,
-            link : this.link,
-            pubDate : this.pubDate,
-            channelName : Template.instance().data.channelName
+        let book = {
+            user_id: Meteor.userId(),
+            title: this.title,
+            imgUrl: this.imgUrl,
+            link: this.link,
+            pubDate: this.pubDate,
+            channelName: Template.instance().data.channelName
         }
-        if(this.imgUrl) {
+        if (this.imgUrl) {
             book['imgUrl'] = this.imgUrl;
         } else {
             book['imgUrl'] = 'Image not available';

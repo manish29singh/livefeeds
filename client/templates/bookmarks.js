@@ -1,6 +1,10 @@
 import {Meteor} from 'meteor/meteor';
 import {Template} from 'meteor/templating';
 
+Template.bookmarks.onCreated(function(){
+    Meteor.subscribe('bookmarks');
+})
+
 Template.bookmarks.helpers({
     bookmarks : function(){
         let userId = Meteor.userId();
