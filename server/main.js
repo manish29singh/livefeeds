@@ -8,6 +8,7 @@ Meteor.startup(() => {
 Meteor.methods({
   'fetchFeeds': async function (channelName, categoryId) {
     try {
+     // console.log('server started...');
       var url;
       var doc = await NewsChannels.findOne({ name: channelName });
 

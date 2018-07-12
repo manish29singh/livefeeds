@@ -1,9 +1,6 @@
 import {Meteor} from 'meteor/meteor';
 import {Template} from 'meteor/templating';
 
-Template.recentViews.onCreated(()=>{
-    Meteor.subscribe('recentViews');
-})
 
 Template.recentViews.helpers({
     recentViews : function(){
